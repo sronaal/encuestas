@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chart.js Pie Chart with Data Labels</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+
+<canvas id="surveyPieChart" width="400" height="400"></canvas>
+
+<script>
+    // Obtener el contexto del canvas
+    const ctx = document.getElementById('surveyPieChart').getContext('2d');
+
+    // Crear el gráfico
+    const surveyPieChart = new Chart(ctx, {
+        type: 'pie',
+        data: {
+            labels: ['Respondidas', 'No Respondidas'],
+            datasets: [{
+                data: [850, 350], // Datos
+                backgroundColor: ['#f97316', '#6b7280'], // Colores para las partes de la torta
+                borderWidth: 1,
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+                tooltip: {
+                    callbacks: {
+                        label: function(tooltipItem) {
+                            const label = tooltipItem.label || '';
+                            const value = tooltipItem.raw;
+                            return `${label}: ${value}`;
+                        }
+                    }
+                },
+                datalabels: {
+                    color: '#fff', // Color del texto
+                    anchor: 'center', // Posición de las etiquetas
+                    align: 'center',
+                    formatter: (value, context) => {
+                        const total = context.chart.data.datasets[0].data.reduce((acc, val) => acc + val, 0);
+                        const percentage = ((value / total) * 100).toFixed(1);
+                        return `${percentage}%`; // Mostrar porcentaje
+                    },
+                    font: {
+                        weight: 'bold',
+                        size: 14,
+                    }
+                }
+            }
+        },
+        plugins: [ChartDataLabels] // Registrar el plugin
+    });
+</script>
+
+</body>
+</html>
