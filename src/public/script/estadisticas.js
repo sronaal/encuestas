@@ -34,7 +34,8 @@ export async function obtenerEncuentas() {
     localStorage.setItem('meses', groupByMonth())
     localStorage.setItem('total_encuentas', Encuentas.length)
     localStorage.setItem('data_respuestas', JSON.stringify(contarRespuestasPorTipo(Encuentas)))
-    generarTabla(Encuentas);
+    localStorage.setItem('encuestas', JSON.stringify(Encuentas))
+
 
     console.log(groupByMonth())
 }  
@@ -86,25 +87,6 @@ function groupByMonth() {
     }, {});
 }
 
-function generarTabla(encuestas) {
-    const tabla = document.getElementById('tabla-encuestas').querySelector('tbody');
-    tabla.innerHTML = encuestas.map((encuesta, index) => `
-        <tr class="${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}">
-            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Fecha}</td>
-            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
-            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta1}</td>
-                        <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
-            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta2}</td>
-                        <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
-            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta3}</td>
-                        <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
-            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta4}</td>
-                        <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
-            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta5}</td>
-            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.agente}</td>
-        </tr>
-    `).join('');
-}
 
 
 

@@ -94,34 +94,52 @@
             <br>
             <br>
             <div class="overflow-x-auto">
-                <table id="tabla-encuestas" class="min-w-full bg-white border border-gray-200">
-                  <thead class="bg-gray-50">
-                    <tr>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Fecha</th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Agente</th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 1 </th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 1</th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 2 </th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 2</th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 3 </th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 3</th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 4 </th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 4</th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 5 </th>
-                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 5</th>
-                    </tr>
-                  </thead>
-                  <tbody class="bg-white">
-                    <!-- Las filas serán generadas dinámicamente -->
-                  </tbody>
-                </table>
-              </div>
-              
+
+                <div class="container mx-auto">
+                    <div class="mb-4">
+                        <h2 class="text-xl font-bold mb-2">Encuestas por Agente</h2>
+                        <input type="text" id="filterInput" class="p-2 border rounded"
+                            placeholder="Filtrar por nombre de agente...">
+                        <button id="exportButton" class="bg-blue-500 text-white p-2 rounded ml-4">Exportar CSV</button>
+                    </div>
+                    <table id="tabla-encuestas" class="min-w-full bg-white border border-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Fecha</th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Agente</th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 1
+                                </th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 1
+                                </th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 2
+                                </th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 2
+                                </th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 3
+                                </th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 3
+                                </th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 4
+                                </th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 4
+                                </th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 5
+                                </th>
+                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 5
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white">
+                            <!-- Las filas serán generadas dinámicamente -->
+                        </tbody>
+                    </table>
+                </div>
+
         </main>
     </div>
-    
 
-    <script type="module" src="./script/index.js"></script>
+
+    <script  src="./script/encuestas.js"></script>
 
 </body>
 
