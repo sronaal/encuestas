@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encuestas por Agente</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+</head>
+
+<body class="bg-gray-100 flex">
+    <!-- Sidebar -->
+    <aside id="sidebar"
+        class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
+        <div class="text-white text-2xl font-bold px-4">
+            <i class="fas fa-chart-pie mr-2"></i> Modulo Encuestas
+        </div>
+        <nav>
+            <a href="index.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                <i class="fas fa-home mr-2"></i> Dashboard
+            </a>
+            <a href="./encuestas.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                <i class="fas fa-file-export mr-2"></i> General y Exportar
+            </a>
+            <a href="./encuestas.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+                <i class="fas fa-file-export mr-2"></i> Agente
+            </a>
+        </nav>
+    </aside>
+
+    <div class="flex-1 flex flex-col">
+        <!-- Mobile Menu Button -->
+        <div class="bg-gray-800 text-white flex justify-between md:hidden">
+            <div class="p-4">
+                <button id="mobile-menu-button" class="focus:outline-none">
+                    <i class="fas fa-bars fa-2x"></i>
+                </button>
+            </div>
+            <h1 class="text-2xl font-bold p-4">Estadísticas por Agente</h1>
+        </div>
+
+        <!-- Header -->
+        <header class="bg-white shadow p-4 flex justify-between items-center hidden md:flex">
+            <div class="flex items-center space-x-4">
+                <img src="https://via.placeholder.com/40" alt="Logo" class="h-10 w-10 rounded-full">
+                <h1 class="text-2xl font-bold text-gray-800">Estadísticas por Agente</h1>
+            </div>
+            <div>
+                <!-- Aquí podrías agregar más opciones si las necesitas -->
+            </div>
+        </header>
+
+        <main class="container mx-auto p-6">
+            <!-- Gráficos para Encuestas por Agente y Satisfacción por Agente -->
+            <div class="flex flex-wrap gap-6">
+                <!-- Gráfico de Encuestas por Agente Según el Mes -->
+                <div class="bg-white p-4 rounded-lg shadow-lg flex-1">
+                    <h3 class="text-xl font-bold mb-4">Encuestas por Agente Según el Mes</h3>
+                    <canvas id="encuestasPorAgenteChart" width="400" height="300"></canvas>
+                </div>
+
+                <!-- Gráfico de Nivel de Satisfacción por Agente -->
+                <div class="bg-white p-4 rounded-lg shadow-lg flex-1">
+                    <h3 class="text-xl font-bold mb-4">Nivel de Satisfacción por Agente</h3>
+                    <canvas id="satisfaccionPorAgenteChart" width="400" height="300"></canvas>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script/grafs2.js"></script>
+</body>
+
+</html>

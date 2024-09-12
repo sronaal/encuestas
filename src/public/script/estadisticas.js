@@ -2,14 +2,17 @@ let pTotalEncuentas = document.getElementById('totalEncuentas')
 let pTotalContestadas = document.getElementById('totalContestadas')
 let ptotalNoContestadas = document.getElementById('totalNoContestadas')
 
+
 let Encuentas = []
 export let totalRespuestas = 0
 export let totalNoRespuestas = 0
-
+let totalEncuentas = 0
 
 export  function init(){
 
     obtenerEncuentas()
+    
+    //mostrarPorcentajeEncuentas()
 
 }
 
@@ -21,15 +24,21 @@ export async function obtenerEncuentas() {
 
 
     Encuentas = await encuentas.json()
-    pTotalEncuentas.textContent = Encuentas.length
     console.log(Encuentas)
+    pTotalEncuentas.textContent = Encuentas.length
+
     pTotalContestadas.textContent = contarRespuestasValidas()
     ptotalNoContestadas.textContent = contarRespuestasNull()
     localStorage.setItem('totalRespuestas', contarRespuestasValidas())
     localStorage.setItem('totalNoRespondidas', contarRespuestasNull())
     localStorage.setItem('meses', groupByMonth())
+    localStorage.setItem('total_encuentas', Encuentas.length)
+    localStorage.setItem('data_respuestas', JSON.stringify(contarRespuestasPorTipo(Encuentas)))
+    generarTabla(Encuentas);
+
     console.log(groupByMonth())
 }  
+
 
 function contarRespuestasValidas() {
     let total = 0
@@ -76,3 +85,71 @@ function groupByMonth() {
         return acc;
     }, {});
 }
+
+function generarTabla(encuestas) {
+    const tabla = document.getElementById('tabla-encuestas').querySelector('tbody');
+    tabla.innerHTML = encuestas.map((encuesta, index) => `
+        <tr class="${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}">
+            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Fecha}</td>
+            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
+            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta1}</td>
+                        <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
+            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta2}</td>
+                        <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
+            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta3}</td>
+                        <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
+            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta4}</td>
+                        <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta}</td>
+            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta5}</td>
+            <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.agente}</td>
+        </tr>
+    `).join('');
+}
+
+
+
+
+
+
+
+
+function contarRespuestasPorTipo(encuestas) {
+    let conteoRespuestas = {
+        "Totalmente Satisfecho": 0,
+        "Satisfecho": 0,
+        "Neutral": 0,
+        "Insatisfecho": 0,
+        "Totalmente Insatisfecho": 0
+    };
+
+    // Recorrer cada encuesta
+    encuestas.forEach(encuesta => {
+        // Iterar sobre las respuestas de texto en la encuesta
+        for (let i = 1; i <= 5; i++) {
+            let textoRespuesta = encuesta[`TextoRespuesta${i}`];
+
+            if (textoRespuesta && textoRespuesta !== "No Respondido") {
+                // Incrementar el contador para la respuesta correspondiente
+                if (conteoRespuestas[textoRespuesta] !== undefined) {
+                    conteoRespuestas[textoRespuesta]++;
+                }
+            }
+        }
+    });
+
+    // Convertir el objeto de conteo a un array, manteniendo el orden específico
+    let arrayRespuestas = [
+        { id: "Totalmente Satisfecho", nested: { value: conteoRespuestas["Totalmente Satisfecho"]} },
+        { id: "Satisfecho", nested: {value: conteoRespuestas["Satisfecho"] }},
+        { id: "Neutral", nested: {value: conteoRespuestas["Neutral"] }},
+        { id: "Insatisfecho", nested: {value :  conteoRespuestas["Insatisfecho"]} },
+        { id: "Totalmente Insatisfecho", nested: { value : conteoRespuestas["Totalmente Insatisfecho"]} }
+    ];
+
+    return arrayRespuestas;
+}
+
+
+
+
+

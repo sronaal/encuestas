@@ -6,7 +6,7 @@ class encuestaDao{
 
     findAll(){
 
-        return conexion.query('Select * from Respuestas');
+        return conexion.query('SELECT * FROM RespuestasVista;');
     }
 }
 

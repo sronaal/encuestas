@@ -17,7 +17,7 @@
     <aside id="sidebar"
         class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
         <div class="text-white text-2xl font-bold px-4">
-            <i class="fas fa-chart-pie mr-2"></i> Modulo de encuestas
+            <i class="fas fa-chart-pie mr-2"></i> Modulo Encuestas
         </div>
         <nav>
             <a href="index.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
@@ -26,7 +26,7 @@
             <a href="./encuestas.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
                 <i class="fas fa-file-export mr-2"></i> General y Exportar
             </a>
-            <a href="./encuestas.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
+            <a href="./agente.html" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-gray-700">
                 <i class="fas fa-file-export mr-2"></i> Agente
             </a>
         </nav>
@@ -91,66 +91,37 @@
                 </div>
             </div>
 
-            <!-- Pie Chart for Percentage of Surveys Responded -->
-            <div class="flex">
-                <div class="bg-white p-4 rounded-lg shadow m-6 ">
-                    <h1 class="text-center text-xl font-bold">Porcentaje De Preguntas </h1>
-                    <canvas id="surveyPieChart"  width="400" height="200"></canvas>
-                </div>
-
-                <div class="bg-white p-4 rounded-lg shadow m-6 ">
-                    <h1 class="text-center text-xl font-bold">Total De Respuestas Por Encuesta </h1>
-                    <canvas id="respuestasDoughnutChart" width="400" height="00"></canvas>
-                </div>
-
-                <div class="bg-white max-w-lg mx-auto">
-                    <h1 class="text-center text-xl font-bold">Total Encuestas ingresas por Dia</h1>
-                    <canvas id="graficoDiasSemana" width="700" height="500"></canvas>
-                </div>
-            </div>
-
-
-            <!-- Small Table with Survey Questions and Values -->
-            <!--
-                <div class="bg-white p-4 rounded-lg shadow-lg mb-6">
-                <h3 class="text-xl font-bold mb-4">Preguntas y Respuestas de Encuestas</h3>
-                <table class="w-full text-left">
-                    <thead>
-                        <tr class="bg-gray-200">
-                            <th class="py-2 px-4">Pregunta</th>
-                            <th class="py-2 px-4">Valor</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td class="border-t py-2 px-4">¿Cómo califica el servicio?</td>
-                            <td class="border-t py-2 px-4">8/10</td>
-                        </tr>
-                        <tr>
-                            <td class="border-t py-2 px-4">¿Recomendaría nuestro servicio?</td>
-                            <td class="border-t py-2 px-4">Sí</td>
-                        </tr>
-                    </tbody>
+            <br>
+            <br>
+            <div class="overflow-x-auto">
+                <table id="tabla-encuestas" class="min-w-full bg-white border border-gray-200">
+                  <thead class="bg-gray-50">
+                    <tr>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Fecha</th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Agente</th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 1 </th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 1</th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 2 </th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 2</th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 3 </th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 3</th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 4 </th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 4</th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 5 </th>
+                      <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 5</th>
+                    </tr>
+                  </thead>
+                  <tbody class="bg-white">
+                    <!-- Las filas serán generadas dinámicamente -->
+                  </tbody>
                 </table>
-            </div>            
-        
-    -->
-
-
-            <!-- Bar Chart for Surveys Per Month -->
-            <div class="bg-white p-4 rounded-lg shadow-lg">
-                <h3 class="text-xl font-bold mb-4">Encuestas por Mes</h3>
-                <div class="relative h-64 w-full">
-                    <canvas id="surveyBarChart"></canvas>
-                </div>
-            </div>
-
+              </div>
+              
         </main>
     </div>
-
+    
 
     <script type="module" src="./script/index.js"></script>
-    <script type="module" src="./script/grafs.js"></script>
 
 </body>
 
