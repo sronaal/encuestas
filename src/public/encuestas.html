@@ -7,6 +7,10 @@
     <title>Call Statistics Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
 
@@ -100,6 +104,15 @@
                         <h2 class="text-xl font-bold mb-2">Encuestas por Agente</h2>
                         <input type="text" id="filterInput" class="p-2 border rounded"
                             placeholder="Filtrar por nombre de agente...">
+
+                        <select id="filterResponse" class="p-2 border rounded">
+                            <option value="">Filtrar por respuesta...</option>
+                            <option value="Totalmente Satisfecho">Totalmente Satisfecho</option>
+                            <option value="Satisfecho">Satisfecho</option>
+                            <option value="Neutral">Neutral</option>
+                            <option value="Insatisfecho">Insatisfecho</option>
+                            <option value="Totalmente Insatisfecho">Totalmente Insatisfecho</option>
+                        </select>
                         <button id="exportButton" class="bg-blue-500 text-white p-2 rounded ml-4">Exportar CSV</button>
                     </div>
                     <table id="tabla-encuestas" class="min-w-full bg-white border border-gray-200">
@@ -133,13 +146,14 @@
                             <!-- Las filas serán generadas dinámicamente -->
                         </tbody>
                     </table>
+
                 </div>
 
         </main>
     </div>
 
 
-    <script  src="./script/encuestas.js"></script>
+    <script src="./script/encuestas.js"></script>
 
 </body>
 
