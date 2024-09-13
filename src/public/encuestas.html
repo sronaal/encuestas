@@ -94,12 +94,9 @@
                     </div>
                 </div>
             </div>
-
-            <br>
-            <br>
             <div class="overflow-x-auto">
 
-                <div class="container mx-auto">
+                <div class="container">
                     <div class="mb-4">
                         <h2 class="text-xl font-bold mb-2">Encuestas por Agente</h2>
                         <input type="text" id="filterInput" class="p-2 border rounded"
@@ -115,12 +112,22 @@
                         </select>
                         <button id="exportButton" class="bg-blue-500 text-white p-2 rounded ml-4">Exportar CSV</button>
                     </div>
-                    <table id="tabla-encuestas" class="min-w-full bg-white border border-gray-200">
+
+
+
+
+                    <table id="tabla-encuestas" class="min-w-full border divide-y divide-gray-200 bg-white">
                         <thead class="bg-gray-50">
                             <tr>
-                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Fecha</th>
-                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Agente</th>
-                                <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Pregunta 1
+                                <th
+                                    class="px-2 py-2 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                    Fecha</th>
+                                <th
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                    Agente</th>
+                                <th
+                                    class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-500 uppercase">
+                                    P1
                                 </th>
                                 <th class="py-2 px-4 border-b text-left text-sm font-semibold text-gray-600">Respuesta 1
                                 </th>
@@ -142,7 +149,7 @@
                                 </th>
                             </tr>
                         </thead>
-                        <tbody class="bg-white">
+                        <tbody class="bg-white min-h-full">
                             <!-- Las filas serán generadas dinámicamente -->
                         </tbody>
                     </table>

@@ -162,37 +162,3 @@ const graficoDiasSemana = new Chart(ctx, {
 });
 
 
-function createSatisfaccionPorAgenteChart() {
-    const ctx = document.getElementById('satisfaccionPorAgenteChart').getContext('2d');
-    new Chart(ctx, {
-        type: 'doughnut',
-        data: {
-            labels: ['Totalmente Satisfecho', 'Satisfecho', 'Neutral', 'Insatisfecho', 'Totalmente Insatisfecho'],
-            datasets: [{
-                label: 'Nivel de Satisfacción por Agente',
-                data: [20, 30, 25, 15, 10], // Cambia estos valores con los datos reales
-                backgroundColor: [
-                    'rgba(75, 192, 192, 0.2)',
-                    'rgba(153, 102, 255, 0.2)',
-                    'rgba(255, 159, 64, 0.2)',
-                    'rgba(255, 99, 132, 0.2)',
-                    'rgba(255, 206, 86, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(75, 192, 192, 1)',
-                    'rgba(153, 102, 255, 1)',
-                    'rgba(255, 159, 64, 1)',
-                    'rgba(255, 99, 132, 1)',
-                    'rgba(255, 206, 86, 1)'
-                ],
-                borderWidth: 1
-            }]
-        },
-        options: {
-            responsive: true
-        }
-    });
-}
-
-
-createSatisfaccionPorAgenteChart()

@@ -18,28 +18,30 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Inicializa DataTables
     $('#tabla-encuestas').DataTable({
+        "scrollY": 400,
+
+        "responsive": true,
         "paging": true,
         "searching": false,
         "info": false,
-        "lengthChange": false, // Opcional, para ocultar el selector de número de filas por página
+        "lengthChange": true, // Opcional, para ocultar el selector de número de filas por página
     });
 
-    // Función para generar la tabla
     function generarTabla(encuestas) {
         const tabla = document.getElementById('tabla-encuestas').querySelector('tbody');
         tabla.innerHTML = encuestas.map((encuesta, index) => `
             <tr class="${index % 2 === 0 ? 'bg-gray-50' : 'bg-white'}">
-                <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Fecha}</td>
-                <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.agente}</td>
-                <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta1}</td>
-                <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta1}</td>
-                <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta2}</td>
+                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">${encuesta.Fecha}</td>
+                <td class="px-6 py-4 text-sm text-gray-500 whitespace-pre-linea">${encuesta.agente}</td>
+                <td class="px-6 py-4 text-sm text-gray-500 overflow-scroll  whitespace-pre	">${encuesta.Pregunta1}</td>
+                <td class="px-6 py-4 text-sm text-gray-500 whitespace-nowrap">${encuesta.Respuesta1}</td>
+                <td class="py-2 px-6 border-b text-gray-700 text-sm">${encuesta.Pregunta2}</td>
                 <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta2}</td>
-                <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta3}</td>
+                <td class="py-2 px-6 border-b text-gray-700 text-sm">${encuesta.Pregunta3}</td>
                 <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta3}</td>
-                <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta4}</td>
+                <td class="py-2 px-6 border-b text-gray-700 text-sm">${encuesta.Pregunta4}</td>
                 <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta4}</td>
-                <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.pregunta5}</td>
+                <td class="py-2 px-6 border-b text-gray-700 text-sm">${encuesta.Pregunta5}</td>
                 <td class="py-2 px-4 border-b text-gray-700 text-sm">${encuesta.Respuesta5}</td>
             </tr>
         `).join('');
@@ -51,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function () {
     let encuestas = JSON.parse(localStorage.getItem('encuestas'));
     generarTabla(encuestas);
 
-    // Filtro en la tabla por respuesta
     filterResponse.addEventListener('change', function () {
         const selectedResponse = filterResponse.value.toLowerCase();
         const table = $('#tabla-encuestas').DataTable();
