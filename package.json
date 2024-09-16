@@ -12,6 +12,8 @@
   "dependencies": {
     "chartjs-plugin-datalabels": "^2.2.0",
     "express": "^4.20.0",
+    "fs": "^0.0.1-security",
+    "https": "^1.0.0",
     "mysql2": "^3.11.2",
     "sequelize": "^6.37.3"
   },
