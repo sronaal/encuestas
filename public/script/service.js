@@ -1,4 +1,4 @@
-const url = "https://200.91.192.58:3000/encuestas"
+const url = "https://200.91.192.58:8081/encuestas"
 
 export function obtenerEncuentas (){
 
