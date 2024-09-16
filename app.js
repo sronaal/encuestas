@@ -13,7 +13,7 @@ app2.use(cors({ origin: ['https://localhost:8081', 'https://200.91.192.58', 'htt
 }));
 
 const rutas = require('./routes/ruta')
-app2.use(rutas)
+app.use(rutas)
 
 app.use(express.static(__dirname + '/public/'))
 app.use(express.static(__dirname + '/public/script'))
