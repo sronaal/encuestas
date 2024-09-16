@@ -4,16 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<<<<<<< HEAD
     <title>Call Statistics Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
     <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+=======
+    <title>Stats Encuestas</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels"></script>
+>>>>>>> 2452e26 (Cambios)
 
 </head>
 
 <body class="bg-gray-100 flex">
+<<<<<<< HEAD
     <!-- Sidebar -->
+=======
+>>>>>>> 2452e26 (Cambios)
     <aside id="sidebar"
         class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
         <div class="text-white text-2xl font-bold px-4">
@@ -33,7 +44,11 @@
     </aside>
 
     <div class="flex-1 flex flex-col">
+<<<<<<< HEAD
         <!-- Mobile Menu Button -->
+=======
+
+>>>>>>> 2452e26 (Cambios)
         <div class="bg-gray-800 text-white flex justify-between md:hidden">
             <div class="p-4">
                 <button id="mobile-menu-button" class="focus:outline-none">
@@ -43,11 +58,18 @@
             <h1 class="text-2xl font-bold p-4">Módulo Estadísticas</h1>
         </div>
 
+<<<<<<< HEAD
         <!-- Header -->
         <header class="bg-white shadow p-4 flex justify-between items-center hidden md:flex">
             <div class="flex items-center space-x-4">
                 <img src="https://via.placeholder.com/40" alt="Logo" class="h-10 w-10 rounded-full">
                 <h1 class="text-2xl font-bold text-gray-800">Módulo Estadísticas Llamadas PBX Asistemyca</h1>
+=======
+        <header class="bg-white shadow p-4 flex justify-between items-center hidden md:flex">
+            <div class="flex items-center space-x-4">
+                <img src="https://via.placeholder.com/40" alt="Logo" class="h-10 w-10 rounded-full">
+                <h1 class="text-2xl font-bold text-gray-800">Módulo Estadísticas Encuestas PBX Asistemyca</h1>
+>>>>>>> 2452e26 (Cambios)
             </div>
             <div>
                 <!-- Aquí podrías agregar más opciones si las necesitas -->
@@ -55,7 +77,10 @@
         </header>
 
         <main class="container mx-auto p-6">
+<<<<<<< HEAD
             <!-- Cards Section with Smaller Cards -->
+=======
+>>>>>>> 2452e26 (Cambios)
             <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <!-- Total Encuestas Recibidas -->
                 <div class="bg-green-500 text-white p-4 rounded-lg shadow-lg flex items-center">
@@ -91,7 +116,10 @@
                 </div>
             </div>
 
+<<<<<<< HEAD
             <!-- Pie Chart for Percentage of Surveys Responded -->
+=======
+>>>>>>> 2452e26 (Cambios)
             <div class="flex">
                 <div class="bg-white p-4 rounded-lg shadow m-6 ">
                     <h1 class="text-center text-xl font-bold">Porcentaje De Preguntas </h1>
@@ -99,6 +127,7 @@
                 </div>
 
                 <div class="bg-white p-4 rounded-lg shadow m-6 ">
+<<<<<<< HEAD
                     <h1 class="text-center text-xl font-bold">Total De Respuestas Por Encuesta </h1>
                     <canvas id="respuestasDoughnutChart" width="400" height="00"></canvas>
                 </div>
@@ -152,6 +181,26 @@
     <script type="module" src="./script/index.js"></script>
     <script type="module" src="./script/grafs.js"></script>
 
+=======
+                    <h1 class="text-center text-xl font-bold">Respuestas del Usuario</h1>
+                    <canvas id="respuestaBarChart" width="800" height="500"></canvas>
+                </div>
+
+
+            </div>
+        <br>
+        <br>
+        <br>
+        </main>
+    </div>
+
+<!--
+    <script type="module" src="./script/index.js"></script>
+    <script type="module" src="./script/grafs.js"></script>
+    
+-->
+    <script type="module" src="./stats.js"></script>    
+>>>>>>> 2452e26 (Cambios)
 </body>
 
 </html>

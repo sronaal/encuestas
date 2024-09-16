@@ -10,7 +10,11 @@ SELECT
     `Respuestas`.`Respuesta4` AS `Respuesta4`,
     `Respuestas`.`Respuesta5` AS `Respuesta5`,
 
+<<<<<<< HEAD
     '¿El funcionario resolvió su problema o respondió a su pregunta de manera satisfactoria?' as `Pregunta1`,
+=======
+    '¿El funcionario resolvio su problema o respondio a su pregunta de manera satisfactoria?' as `Pregunta1`,
+>>>>>>> 2452e26 (Cambios)
     CASE
         WHEN `Respuestas`.`Respuesta1` = 1 THEN 'Totalmente Insatisfecho'
         WHEN `Respuestas`.`Respuesta1` = 2 THEN 'Insatisfecho'
@@ -20,7 +24,11 @@ SELECT
         ELSE 'No Respondido'
     END AS `TextoRespuesta1`,
 
+<<<<<<< HEAD
     '¿Cuál es su nivel de satisfacción con la amabilidad del funcionario que lo atendió?' as `Pregunta2`,
+=======
+    '¿Cuál es su nivel de satisfaccion con la amabilidad del funcionario que lo atendio?' as `Pregunta2`,
+>>>>>>> 2452e26 (Cambios)
     CASE
         WHEN `Respuestas`.`Respuesta2` = 1 THEN 'Totalmente Insatisfecho'
         WHEN `Respuestas`.`Respuesta2` = 2 THEN 'Insatisfecho'
@@ -30,7 +38,12 @@ SELECT
         ELSE 'No Respondido'
     END AS `TextoRespuesta2`,
 
+<<<<<<< HEAD
     'En general, ¿cómo calificaría su experiencia con nuestro servicio de atención al cliente hoy?' as `Pregunta3`,
+=======
+    'En general, ¿como calificaria su experiencia con nuestro servicio de atencion al cliente hoy?' as `Pregunta3`,
+
+>>>>>>> 2452e26 (Cambios)
     CASE
         WHEN `Respuestas`.`Respuesta3` = 1 THEN 'Totalmente Insatisfecho'
         WHEN `Respuestas`.`Respuesta3` = 2 THEN 'Insatisfecho'
@@ -39,7 +52,13 @@ SELECT
         WHEN `Respuestas`.`Respuesta3` = 5 THEN 'Totalmente Satisfecho'
         ELSE 'No Respondido'
     END AS `TextoRespuesta3`,
+<<<<<<< HEAD
     
+=======
+
+    'En general, ¿como calificaria su experencia con nuestro servicio al cliente el dia de hoy' as `Pregunta4`
+
+>>>>>>> 2452e26 (Cambios)
     CASE
         WHEN `Respuestas`.`Respuesta4` = 1 THEN 'Totalmente Insatisfecho'
         WHEN `Respuestas`.`Respuesta4` = 2 THEN 'Insatisfecho'
@@ -48,7 +67,11 @@ SELECT
         WHEN `Respuestas`.`Respuesta4` = 5 THEN 'Totalmente Satisfecho'
         ELSE 'No Respondido'
     END AS `TextoRespuesta4`,
+<<<<<<< HEAD
     
+=======
+    'Califique su satisfaccion de acuerdo al tiempo transcurrido para empezar a ser atendido por nuestro funcionario' as `Pregunta5`
+>>>>>>> 2452e26 (Cambios)
     CASE
         WHEN `Respuestas`.`Respuesta5` = 1 THEN 'Totalmente Insatisfecho'
         WHEN `Respuestas`.`Respuesta5` = 2 THEN 'Insatisfecho'

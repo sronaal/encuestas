@@ -4,6 +4,13 @@ const local_TotalRespondidas = localStorage.getItem('totalRespuestas')
 const local_TotalNoRespondidas = localStorage.getItem('totalNoRespondidas')
 const local_dataRespuestas = JSON.parse(localStorage.getItem("data_respuestas"))
 console.log(local_dataRespuestas)
+<<<<<<< HEAD
+=======
+
+
+
+
+>>>>>>> 2452e26 (Cambios)
 const graficoPorcentaje = document.getElementById('surveyPieChart').getContext('2d');
 // Crear el gráfico
 const surveyPieChart = new Chart(graficoPorcentaje, {

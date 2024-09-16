@@ -3,7 +3,11 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
+<<<<<<< HEAD
     "dev": "nodemon src/index.js"
+=======
+    "dev": "nodemon index.js"
+>>>>>>> 2452e26 (Cambios)
   },
   "keywords": [],
   "author": "",
