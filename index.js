@@ -1,26 +1,17 @@
 
 const fs = require("fs")
 const https = require("https")
+const path = require("path")
 const app = require("./app")
 
 const PORT = 8081
 
-https.createServer({
-    
-    cert: fs.readFileSync(''),
-    key: fs.readFileSync('')}, 
-    app.listen(PORT, (error) => {
-
-        if(error) {
-            console.log(error)
-            throw error
-        }
-
-        console.log(`Servidor HTTPS Ejecutandose en puerto: ${PORT}`)
-    })
-)
-
-app.listen(8081, () => {
-
-    console.log(`SERVIDOR HTTP ON`)
-})
+const sslOptions = {
+    key: fs.readFileSync(path.join(__dirname, 'key.pem')),
+    cert: fs.readFileSync(path.join(__dirname, 'cert.pem'))
+  };
+  
+  // Configura el servidor HTTPS
+  https.createServer(sslOptions, app).listen(PORT, () => {
+    console.log(`Servidor HTTPS corriendo en el puerto ${PORT}`);
+  });

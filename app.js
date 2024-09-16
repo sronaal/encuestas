@@ -1,5 +1,5 @@
 const express = require("express")
-const conexion = require("./conexion")
+const conexion = require("./conexion.js")
 
 const app = express()
 

@@ -6,11 +6,10 @@ let ptotalNoContestadas = document.getElementById('totalNoContestadas')
 let Encuentas = []
 export let totalRespuestas = 0
 export let totalNoRespuestas = 0
-let totalEncuentas = 0
 
 export  function init(){
 
-    obtenerEncuentas()
+   obtenerEncuentas()
     
     //mostrarPorcentajeEncuentas()
 
@@ -20,7 +19,7 @@ export  function init(){
 export async function obtenerEncuentas() {
 
 
-    let encuentas = await fetch('http://localhost:8081/encuestas')
+    let encuentas = await fetch('https://localhost:8081/encuestas')
 
 
     Encuentas = await encuentas.json()
