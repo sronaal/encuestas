@@ -19,7 +19,7 @@ export  function init(){
 export async function obtenerEncuentas() {
 
 
-    let encuentas = await fetch('https://localhost:8081/encuestas')
+    let encuentas = await fetch('http://localhost:3000/encuestas')
 
 
     Encuentas = await encuentas.json()

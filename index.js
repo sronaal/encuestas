@@ -2,7 +2,7 @@
 const fs = require("fs")
 const https = require("https")
 const path = require("path")
-const app = require("./app")
+const {app,app2} = require("./app")
 
 const PORT = 8081
 
@@ -15,3 +15,8 @@ const sslOptions = {
   https.createServer(sslOptions, app).listen(PORT, () => {
     console.log(`Servidor HTTPS corriendo en el puerto ${PORT}`);
   });
+
+app2.listen(3000,() => {
+
+  console.log("SERVER 3000 ON")
+})
