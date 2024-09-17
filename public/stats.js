@@ -8,7 +8,7 @@ import { cargarGraficas } from './grafs.js'
 document.addEventListener('DOMContentLoaded', async () => {
 
     let Encuestas = await obtenerEncuentas()
-
+    console.log(Encuestas)
     let pTotalEncuentas = document.getElementById('totalEncuentas')
     let pTotalContestadas = document.getElementById('totalContestadas')
     let ptotalNoContestadas = document.getElementById('totalNoContestadas')
@@ -22,7 +22,12 @@ document.addEventListener('DOMContentLoaded', async () => {
     let total_respuestasNull = contarRespuestasNull(Encuestas)
     let respuestas_por_tipo = contarRespuestasPorTipo(Encuestas)
     
+    localStorage.setItem('totalEncuetas', total_encuentas)
+    localStorage.setItem('total_respuestasValidas', total_respuestasValidas)
+    localStorage.setItem('total_respuestasNull', total_respuestasNull)
+
     await cargarGraficas(total_respuestasValidas,total_respuestasNull, respuestas_por_tipo)
+
 
 
 })
