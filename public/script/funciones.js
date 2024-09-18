@@ -82,3 +82,49 @@ export function contarRespuestasPorTipo(encuestas) {
 
     return arrayRespuestas;
 }
+
+export const contarRespuestaPorAgente = (encuestas) => {
+    // Inicializamos un objeto para almacenar el conteo de respuestas por agente
+    const responseCounts = {};
+
+    // Definimos los tipos de respuestas
+    const responseTypes = {
+        "Totalmente Satisfecho": "verySatisfactory",
+        "Satisfecho": "satisfactory",
+        "Neutral": "neutral",
+        "Insatisfecho": "dissatisfactory",
+        "Totalmente Insatisfecho": "veryDissatisfactory"
+    };
+
+    // Recorremos los datos
+    encuestas.forEach(entry => {
+        const agent = entry.Extension;
+        
+        // Inicializamos el contador para el agente si no existe
+        if (!responseCounts[agent]) {
+            responseCounts[agent] = {
+                satisfactory: 0,
+                verySatisfactory: 0,
+                neutral: 0,
+                dissatisfactory: 0,
+                veryDissatisfactory: 0
+            };
+        }
+
+        // Contamos las respuestas para cada pregunta
+        for (let i = 1; i <= 5; i++) {
+            const responseText = entry[`TextoRespuesta${i}`];
+            if (responseTypes[responseText]) {
+                responseCounts[agent][responseTypes[responseText]] += 1;
+            }
+        }
+    });
+
+    // Transformamos el objeto en una lista de objetos con el formato requerido
+    const transformedData = Object.keys(responseCounts).map(agent => ({
+        agent: `Agente ${agent}`,
+        ...responseCounts[agent]
+    }));
+
+    return transformedData;
+};

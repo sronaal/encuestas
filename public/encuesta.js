@@ -1,6 +1,7 @@
-import { obtenerEncuentas } from './script/service.js'
+import { obtenerEncuentas } from './script/service.js';
+
 document.addEventListener('DOMContentLoaded', async () => {
-    let encuestas = await obtenerEncuentas();
+
 
     let pTotalEncuentas = document.getElementById('totalEncuentas')
     let pTotalContestadas = document.getElementById('totalContestadas')
@@ -10,63 +11,93 @@ document.addEventListener('DOMContentLoaded', async () => {
     pTotalContestadas.textContent = localStorage.getItem('total_respuestasValidas')
     ptotalNoContestadas.textContent = localStorage.getItem('total_respuestasNull')
 
-    const tableBody = document.getElementById('tableBody');
     const filterCallerID = document.getElementById('filterCallerID');
+    const filterResponse = document.getElementById('filterResponse');
+    const filterDate = document.getElementById('filterDate');
     const exportCSV = document.getElementById('exportCSV');
 
-    function renderTable(filteredData) {
-        tableBody.innerHTML = '';
-        filteredData.forEach((item, index) => {
-            const row = `
-                <tr>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">${index + 1}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.id}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.Extension}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.Fecha}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.Hora}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.TextoRespuesta1}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.TextoRespuesta2}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.TextoRespuesta3}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.TextoRespuesta4}</td>
-                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-700">${item.TextoRespuesta5}</td>
-                </tr>
-            `;
-            tableBody.insertAdjacentHTML('beforeend', row);
-        });
-    }
-
-    // Filtro por CallerID
-    filterCallerID.addEventListener('input', (e) => {
-        const value = e.target.value;
-        const filteredData = encuestas.filter(item => item.CallerID.includes(value));
-        renderTable(filteredData);
+    const table = $('#dataTable').DataTable({
+        "paging": true,
+        "searching": true,
+        "ordering": true,
+        "info": true,
+        "lengthChange": true,
+        "language": {
+            "search": "Buscar:",
+            "paginate": {
+                "next": "Siguiente",
+                "previous": "Anterior"
+            },
+            "info": "Mostrando _START_ a _END_ de _TOTAL_ entradas",
+            "infoEmpty": "Mostrando 0 a 0 de 0 entradas"
+        },
+        "data": [], // Placeholder for data
+        "columns": [
+            { "data": "index" },
+            { "data": "callerID" },
+            { "data": "extension" },
+            { "data": "date" },
+            { "data": "hour" },
+            { "data": "response1" },
+            { "data": "response2" },
+            { "data": "response3" },
+            { "data": "response4" },
+            { "data": "response5" }
+        ]
     });
 
+    function fillTable(data) {
+        table.clear();
+        table.rows.add(data).draw();
+    }
+
+    async function fetchData() {
+        try {
+            const data = await obtenerEncuentas();
+
+            console.log(data) 
+            const formattedData = data.map((item, index) => ({
+                index: index + 1,
+                callerID: item.CallerID,
+                extension: item.Extension,
+                date: item.Fecha,
+                hour: item.Hora,
+                response1: item.TextoRespuesta1,
+                response2: item.TextoRespuesta2,
+                response3: item.TextoRespuesta3,
+                response4: item.TextoRespuesta4,
+                response5: item.TextoRespuesta5
+            }));
+            fillTable(formattedData);
+        } catch (error) {
+            console.error('Error fetching data:', error);
+        }
+    }
+
+    function applyFilters() {
+        const callerID = filterCallerID.value;
+        const response = filterResponse.value;
+        const date = filterDate.value;
+
+        // Apply filters
+        table
+            .columns(1).search(callerID) // Filter by CallerID
+            .columns([5, 6, 7, 8, 9]).search(response) // Filter by Response
+            .columns(3).search(date) // Filter by Date
+            .draw();
+    }
+
+    filterCallerID.addEventListener('input', applyFilters);
+    filterResponse.addEventListener('change', applyFilters);
+    filterDate.addEventListener('change', applyFilters);
 
     exportCSV.addEventListener('click', () => {
-        exportTableToCSV(encuestas, 'encuestas.csv');
+        const csv = Papa.unparse(table.rows().data().toArray());
+        const link = document.createElement('a');
+        link.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csv);
+        link.download = 'encuestas.csv';
+        link.click();
     });
 
-
-    function exportTableToCSV(data, filename) {
-        const csv = data.map(item => [
-            item.id, item.Extension, item.Fecha, item.Hora, 
-            item.TextoRespuesta1, item.TextoRespuesta2, item.TextoRespuesta3, 
-            item.TextoRespuesta4, item.TextoRespuesta5
-        ]);
-        const csvContent = "data:text/csv;charset=utf-8,"
-            + ["#ID,Extension,Fecha,Hora,Respuesta 1,Respuesta 2,Respuesta 3,Respuesta 4,Respuesta 5"]
-                .concat(csv.map(e => e.join(",")))
-                .join("\n");
-
-        const link = document.createElement('a');
-        link.setAttribute('href', encodeURI(csvContent));
-        link.setAttribute('download', filename);
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-    }
-
-    // Renderizar la tabla con todos los datos al cargar la página
-    renderTable(encuestas);
+    fetchData();
 });
