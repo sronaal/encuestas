@@ -171,3 +171,26 @@ export const  contarRespuestasPorPregunta = (encuestas) => {
     // Retornar el array con los resultados
     return conteoRespuestasArray;
 }
+
+export const contarRespuestaPregunta5 = (encuestas) => {
+
+    const conteoRespuesta = []
+    const conteoObject = {
+        'SI':0,
+        'NO':0
+    }
+    encuestas.forEach((item) => {
+
+        if (item.TextoRespuesta5 === 'SI' ){
+            conteoObject.SI +=1
+        }
+        if (item.TextoRespuesta5 === 'NO'){
+            conteoObject.NO +=1
+        }
+
+    })
+
+    conteoRespuesta.push(conteoObject)
+    return conteoRespuesta
+
+}

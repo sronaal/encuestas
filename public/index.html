@@ -45,7 +45,6 @@
 
         <header class="bg-white shadow p-4 flex justify-between items-center hidden md:flex">
             <div class="flex items-center space-x-4">
-                <img src="https://via.placeholder.com/40" alt="Logo" class="h-10 w-10 rounded-full">
                 <h1 class="text-2xl font-bold text-gray-800">Módulo Estadísticas Encuestas PBX Asistemyca</h1>
             </div>
             <div>
@@ -53,8 +52,9 @@
             </div>
         </header>
 
-        <main class="container mx-auto p-6">
-            <div class="grid justify-items-center grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+        <main class="container mx-auto p-6 m-5">
+
+            <div class="grid ml-28 justify-self-center grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <!-- Total Encuestas Recibidas -->
                 <div class="bg-green-500 text-white p-4 rounded-lg shadow-lg flex items-center">
                     <div class="flex-1">
@@ -67,7 +67,7 @@
                 </div>
 
                 <!-- Total Encuestas Contestadas -->
-                <div class="bg-orange-500 text-black p-4 rounded-lg shadow-lg flex items-center">
+                <div class="bg-orange-500  text-black p-4 rounded-lg shadow-lg flex items-center">
                     <div class="flex-1">
                         <h3 class="text-lg font-bold">Total Preguntas Contestadas</h3>
                         <p id="totalContestadas" class="text-2xl mt-2"></p>
@@ -81,28 +81,33 @@
             <div class="flex flex-col">
 
 
-                <div class="bg-white p-4 rounded-lg shadow m-6 ">
-                    <h1 class="text-center text-xl font-bold">Respuestas del Usuario</h1>
-                    <canvas id="respuestaBarChart" width="300" height="100"></canvas>
+                <div class="flex">
+
+                    <div class="bg-white p-4 rounded-lg shadow m-6 ">
+                        <h1 class="text-center text-xl font-bold">Respuestas del Usuario</h1>
+                        <canvas id="graficoPorcentaje" width="300" height="300"></canvas>
+                    </div>
+
+                    <div class="bg-white p-4 rounded-lg shadow m-6 ">
+                        <h1 class="text-center text-xl font-bold">Respuestas del Usuario</h1>
+                        <canvas id="respuestaBarChart" width="600" height="300"></canvas>
+                    </div>
                 </div>
 
+                <h1 class="text-center text-1xl font-semibold">1 - ¿El funcionario resolvio su problema o respondio
+                    a su pregunta de manera satisfactoria?</h1>
                 <div class="bg-white p-4 rounded-lg shadow m-6 ">
-                    <h1 class="text-center text-1xl font-semibold">1 - ¿El funcionario resolvio su problema o respondio
-                        a su pregunta de manera satisfactoria?</h1>
-
                     <canvas id="respuestaPregunta1" width="300" height="100"></canvas>
                 </div>
 
+                <h1 class="text-center text-1xl font-semibold">2 - ¿Cual es su nivel de satisfaccion con la
+                    amabilidad del funcionario que lo atendio?</h1>
                 <div class="bg-white p-4 rounded-lg shadow m-6 ">
-                    <h1 class="text-center text-1xl font-semibold">2 - ¿Cual es su nivel de satisfaccion con la
-                        amabilidad del funcionario que lo atendio?</h1>
-
                     <canvas id="respuestaPregunta2" width="300" height="100"></canvas>
                 </div>
 
                 <h1 class="text-center text-1xl font-semibold">3 -En general, ¿Como calificaria su experiencia con
                     nuestro servicio de atencion al cliente hoy?</h1>
-
                 <div class="bg-white p-4 rounded-lg shadow m-6 ">
                     <canvas id="respuestaPregunta3" width="300" height="100"></canvas>
                 </div>
