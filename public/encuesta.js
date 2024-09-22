@@ -5,11 +5,9 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     let pTotalEncuentas = document.getElementById('totalEncuentas')
     let pTotalContestadas = document.getElementById('totalContestadas')
-    let ptotalNoContestadas = document.getElementById('totalNoContestadas')
 
     pTotalEncuentas.textContent = localStorage.getItem('totalEncuetas')
     pTotalContestadas.textContent = localStorage.getItem('total_respuestasValidas')
-    ptotalNoContestadas.textContent = localStorage.getItem('total_respuestasNull')
 
     const filterCallerID = document.getElementById('filterCallerID');
     const filterResponse = document.getElementById('filterResponse');
@@ -23,7 +21,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         "info": true,
         "lengthChange": true,
         "language": {
-            "search": "Buscar:",
             "paginate": {
                 "next": "Siguiente",
                 "previous": "Anterior"
@@ -75,21 +72,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function applyFilters() {
-        const callerID = filterCallerID.value;
         const response = filterResponse.value;
+        console.log(response)
         const date = filterDate.value;
 
         // Apply filters
         table
-            .columns(1).search(callerID) // Filter by CallerID
             .columns([5, 6, 7, 8, 9]).search(response) // Filter by Response
             .columns(3).search(date) // Filter by Date
             .draw();
     }
 
-    filterCallerID.addEventListener('input', applyFilters);
     filterResponse.addEventListener('change', applyFilters);
     filterDate.addEventListener('change', applyFilters);
+
+
 
     exportCSV.addEventListener('click', () => {
         const csv = Papa.unparse(table.rows().data().toArray());

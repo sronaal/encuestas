@@ -12,7 +12,7 @@
 
 </head>
 
-<body class="bg-gray-100 flex">
+<body class="bg-gray-100 flex  max-w-full">
     <!-- Sidebar -->
     <aside id="sidebar"
         class="bg-gray-800 text-white w-64 space-y-6 py-7 px-2 absolute inset-y-0 left-0 transform -translate-x-full md:relative md:translate-x-0 transition duration-200 ease-in-out">
@@ -54,7 +54,7 @@
         </header>
 
         <main class="container mx-auto p-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="grid justify-items-center grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <!-- Total Encuestas Recibidas -->
                 <div class="bg-green-500 text-white p-4 rounded-lg shadow-lg flex items-center">
                     <div class="flex-1">
@@ -76,44 +76,66 @@
                         <i class="fas fa-check-circle fa-lg"></i>
                     </div>
                 </div>
-
-                <!-- Total Encuestas No Contestadas -->
-                <div class="bg-gray-500 text-white p-4 rounded-lg shadow-lg flex items-center">
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold">Total Preguntas No Contestadas</h3>
-                        <p id="totalNoContestadas" class="text-2xl mt-2"></p>
-                    </div>
-                    <div>
-                        <i class="fas fa-times-circle fa-lg"></i>
-                    </div>
-                </div>
             </div>
 
-            <div class="flex">
-                <div class="bg-white p-4 rounded-lg shadow m-6 ">
-                    <h1 class="text-center text-xl font-bold">Porcentaje De Preguntas </h1>
-                    <canvas id="surveyPieChart"  width="400" height="200"></canvas>
-                </div>
+            <div class="flex flex-col">
+
 
                 <div class="bg-white p-4 rounded-lg shadow m-6 ">
                     <h1 class="text-center text-xl font-bold">Respuestas del Usuario</h1>
-                    <canvas id="respuestaBarChart" width="800" height="500"></canvas>
+                    <canvas id="respuestaBarChart" width="300" height="100"></canvas>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow m-6 ">
+                    <h1 class="text-center text-1xl font-semibold">1 - ¿El funcionario resolvio su problema o respondio
+                        a su pregunta de manera satisfactoria?</h1>
+
+                    <canvas id="respuestaPregunta1" width="300" height="100"></canvas>
+                </div>
+
+                <div class="bg-white p-4 rounded-lg shadow m-6 ">
+                    <h1 class="text-center text-1xl font-semibold">2 - ¿Cual es su nivel de satisfaccion con la
+                        amabilidad del funcionario que lo atendio?</h1>
+
+                    <canvas id="respuestaPregunta2" width="300" height="100"></canvas>
+                </div>
+
+                <h1 class="text-center text-1xl font-semibold">3 -En general, ¿Como calificaria su experiencia con
+                    nuestro servicio de atencion al cliente hoy?</h1>
+
+                <div class="bg-white p-4 rounded-lg shadow m-6 ">
+                    <canvas id="respuestaPregunta3" width="300" height="100"></canvas>
+                </div>
+
+                <h1 class="text-center text-1xl font-semibold">4 - En general, ¿Como calificaria su experiencia con
+                    nuestro servicio al cliente el dia de hoy</h1>
+
+                <div class="bg-white p-4 rounded-lg shadow m-6 ">
+                    <canvas id="respuestaPregunta4" width="300" height="100"></canvas>
+                </div>
+
+                <h1 class="text-center text-1xl font-semibold">5 - Califique su satisfaccion de acuerdo al tiempo
+                    transcurrido para empezar a ser atendido por nuestro funcionario</h1>
+
+                <div class="bg-white p-4 rounded-lg shadow m-6 ">
+                    <canvas id="respuestaPregunta5" width="300" height="100"></canvas>
                 </div>
 
 
+
             </div>
-        <br>
-        <br>
-        <br>
+            <br>
+            <br>
+            <br>
         </main>
     </div>
 
-<!--
+    <!--
     <script type="module" src="./script/index.js"></script>
     <script type="module" src="./script/grafs.js"></script>
     
 -->
-    <script type="module" src="./stats.js"></script>    
+    <script type="module" src="./stats.js"></script>
 </body>
 
 </html>

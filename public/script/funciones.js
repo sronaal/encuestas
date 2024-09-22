@@ -128,3 +128,46 @@ export const contarRespuestaPorAgente = (encuestas) => {
 
     return transformedData;
 };
+
+
+export const  contarRespuestasPorPregunta = (encuestas) => {
+    // Estructura donde almacenaremos los conteos por pregunta
+    const conteoRespuestasArray = [];
+
+    encuestas.forEach(item => {
+        // Iterar sobre cada pregunta y respuesta
+        for (let i = 1; i <= 5; i++) {
+            const pregunta = `Pregunta_${i}`;
+            const respuestaTexto = item[`TextoRespuesta${i}`];
+
+            // Buscar si ya existe un objeto para la pregunta en el array
+            let preguntaObj = conteoRespuestasArray.find(p => p.pregunta === pregunta);
+
+            // Si no existe, inicializar el objeto para esa pregunta
+            if (!preguntaObj) {
+                preguntaObj = {
+                    pregunta,
+                    "Totalmente Satisfecho": 0,
+                    "Satisfecho": 0,
+                    "Insatisfecho": 0,
+                    "Totalmente Insatisfecho": 0
+                };
+                conteoRespuestasArray.push(preguntaObj);
+            }
+
+            // Contar la respuesta según el texto de satisfacción
+            if (respuestaTexto === "Totalmente Satisfecho") {
+                preguntaObj["Totalmente Satisfecho"]++;
+            } else if (respuestaTexto === "Satisfecho") {
+                preguntaObj["Satisfecho"]++;
+            } else if (respuestaTexto === "Insatisfecho") {
+                preguntaObj["Insatisfecho"]++;
+            } else if (respuestaTexto === "Totalmente Insatisfecho") {
+                preguntaObj["Totalmente Insatisfecho"]++;
+            }
+        }
+    });
+
+    // Retornar el array con los resultados
+    return conteoRespuestasArray;
+}

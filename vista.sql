@@ -53,11 +53,8 @@ SELECT
 
     'Califique su satisfaccion de acuerdo al tiempo transcurrido para empezar a ser atendido por nuestro funcionario' AS `Pregunta5`,
     CASE
-        WHEN `Respuestas`.`Respuesta5` = 1 THEN 'Totalmente Insatisfecho'
-        WHEN `Respuestas`.`Respuesta5` = 2 THEN 'Insatisfecho'
-        WHEN `Respuestas`.`Respuesta5` = 3 THEN 'Neutral'
-        WHEN `Respuestas`.`Respuesta5` = 4 THEN 'Satisfecho'
-        WHEN `Respuestas`.`Respuesta5` = 5 THEN 'Totalmente Satisfecho'
+        WHEN `Respuestas`.`Respuesta5` = 1 THEN 'SI'
+        WHEN `Respuestas`.`Respuesta5` = 2 THEN 'NO'
         ELSE 'No Respondido'
     END AS `TextoRespuesta5`
 
