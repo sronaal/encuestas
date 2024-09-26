@@ -47,14 +47,11 @@
             <div class="flex items-center space-x-4">
                 <h1 class="text-2xl font-bold text-gray-800">Módulo Estadísticas Encuestas PBX Asistemyca</h1>
             </div>
-            <div>
-                <!-- Aquí podrías agregar más opciones si las necesitas -->
-            </div>
         </header>
 
-        <main class="container mx-auto p-6 m-5">
+        <main class="container mx-auto p-6">
 
-            <div class="grid ml-28 justify-self-center grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="grid ml-20 justify-self-center grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <!-- Total Encuestas Recibidas -->
                 <div class="bg-green-500 text-white p-4 rounded-lg shadow-lg flex items-center">
                     <div class="flex-1">
@@ -76,6 +73,27 @@
                         <i class="fas fa-check-circle fa-lg"></i>
                     </div>
                 </div>
+
+
+            </div>
+
+            <div class="flex flex-wrap ml-5 gap-5 mx-3">
+
+                <div class="flex">
+                    <p class="text-1xl mt-2">Filtrar Por fecha</p>
+                    <input id="filterDate" type="date" class="border rounded py-2 px-4 max-h-11">
+    
+                </div>
+                <div class="flex">
+                    <p class="text-1xl mt-2">Fecha Inicio</p>
+                    <input id="filterDateInicio" type="date" class="border rounded py-2 px-4">
+                    <p class="text-1xl mt-2">Fecha Fin</p>
+
+                    <input id="filterDateFin" type="date" class="border rounded py-2 px-4">
+                    <button id="filtrarRango" class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Filtrar por rango 
+                      </button>              
+
             </div>
 
             <div class="flex flex-col">
@@ -123,7 +141,7 @@
                     transcurrido para empezar a ser atendido por nuestro funcionario</h1>
 
                 <div class="bg-white p-4 rounded-lg shadow m-6 ">
-                    <canvas id="respuestaPregunta5" width="300" height="100"></canvas>
+                    <canvas id="pregunta5" width="300" height="100"></canvas>
                 </div>
 
 
