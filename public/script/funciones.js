@@ -130,13 +130,14 @@ export const contarRespuestaPorAgente = (encuestas) => {
 };
 
 
-export const  contarRespuestasPorPregunta = (encuestas) => {
+export const contarRespuestasPorPregunta = (encuestas) => {
     // Estructura donde almacenaremos los conteos por pregunta
     const conteoRespuestasArray = [];
 
+    console.log(encuestas);
     encuestas.forEach(item => {
         // Iterar sobre cada pregunta y respuesta
-        for (let i = 1; i <= 5; i++) {
+        for (let i = 1; i <= 4; i++) {
             const pregunta = `Pregunta_${i}`;
             const respuestaTexto = item[`TextoRespuesta${i}`];
 
@@ -149,6 +150,7 @@ export const  contarRespuestasPorPregunta = (encuestas) => {
                     pregunta,
                     "Totalmente Satisfecho": 0,
                     "Satisfecho": 0,
+                    "Neutral": 0,
                     "Insatisfecho": 0,
                     "Totalmente Insatisfecho": 0
                 };
@@ -160,6 +162,8 @@ export const  contarRespuestasPorPregunta = (encuestas) => {
                 preguntaObj["Totalmente Satisfecho"]++;
             } else if (respuestaTexto === "Satisfecho") {
                 preguntaObj["Satisfecho"]++;
+            } else if (respuestaTexto === "Neutral") {
+                preguntaObj["Neutral"]++;
             } else if (respuestaTexto === "Insatisfecho") {
                 preguntaObj["Insatisfecho"]++;
             } else if (respuestaTexto === "Totalmente Insatisfecho") {
@@ -168,9 +172,10 @@ export const  contarRespuestasPorPregunta = (encuestas) => {
         }
     });
 
-    // Retornar el array con los resultados
+    console.log(conteoRespuestasArray)
     return conteoRespuestasArray;
 }
+
 
 export const contarRespuestaPregunta5 = (encuestas) => {
 

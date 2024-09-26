@@ -131,13 +131,16 @@ export function cargarGraficas(
 
 
             // Datos de preguntas
-            const etiquetasPregunta1 = ["Totalmente Satisfecho", "Satisfecho", "Insatisfecho", "Totalmente Insatisfecho"];
+            const etiquetasPregunta1 = ["Totalmente Satisfecho", "Satisfecho", "Neutral", "Insatisfecho", "Totalmente Insatisfecho"];
             const datosPreguntas = total_RespuestasPorPregunta.map(p => [
                 p["Totalmente Satisfecho"],
                 p["Satisfecho"],
                 p["Insatisfecho"],
+                p["Neutral"],
                 p["Totalmente Insatisfecho"],
             ]);
+
+            console.log(datosPreguntas)
 
             // GRAFICOS PARA CADA PREGUNTA
             for (let i = 0; i < 4; i++) {
