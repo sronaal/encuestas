@@ -53,7 +53,7 @@
         </header>
 
         <main class="container mx-auto p-6">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-6">
+            <div class="grid ml-20 justify-self-center grid-cols-1 md:grid-cols-3 gap-4 mb-6">
                 <!-- Total Encuestas Recibidas -->
                 <div class="bg-green-500 text-white p-4 rounded-lg shadow-lg flex items-center">
                     <div class="flex-1">
@@ -66,7 +66,7 @@
                 </div>
 
                 <!-- Total Encuestas Contestadas -->
-                <div class="bg-orange-500 text-black p-4 rounded-lg shadow-lg flex items-center">
+                <div class="bg-orange-500  text-black p-4 rounded-lg shadow-lg flex items-center">
                     <div class="flex-1">
                         <h3 class="text-lg font-bold">Total Preguntas Contestadas</h3>
                         <p id="totalContestadas" class="text-2xl mt-2"></p>
@@ -76,16 +76,28 @@
                     </div>
                 </div>
 
-                <!-- Total Encuestas No Contestadas -->
-                <div class="bg-gray-500 text-white p-4 rounded-lg shadow-lg flex items-center">
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold">Total Preguntas No Contestadas</h3>
-                        <p id="totalNoContestadas" class="text-2xl mt-2"></p>
-                    </div>
-                    <div>
-                        <i class="fas fa-times-circle fa-lg"></i>
-                    </div>
+
+            </div>
+
+            <div class="flex flex-wrap ml-5 gap-5 mx-3">
+
+                <div class="flex">
+
+
                 </div>
+                <div class="flex">
+                    <p class="text-1xl mt-2">Fecha Inicio</p>
+                    <input id="filterDateInicio" type="date" class="border rounded py-2 px-4">
+                    <p class="text-1xl mt-2">Fecha Fin</p>
+
+                    <input id="filterDateFin" type="date" class="border rounded py-2 px-4">
+                    <button id="filtrarRango"
+                        class="bg-green-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Filtrar por rango
+                    </button>
+
+                </div>
+
             </div>
 
             <div class="flex justify-center">
@@ -97,13 +109,13 @@
 
 
             </div>
-        <br>
-        <br>
-        <br>
+            <br>
+            <br>
+            <br>
         </main>
     </div>
 
-<!--
+    <!--
     <script type="module" src="./script/index.js"></script>
     <script type="module" src="./script/grafs.js"></script>
     
