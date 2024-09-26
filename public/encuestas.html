@@ -82,36 +82,52 @@
                 </div>
             </div>
 
-            
+
             <div class="mb-6 flex space-x-4">
-                <select id="filterResponse" class="border rounded py-2 px-4">
-                    <option value="">Filtrar por Respuesta</option>
-                    <option value="Totalmente Satisfecho">Totalmente Satisfecho</option>
-                    <option value="Satisfecho">Satisfecho</option>
-                    <option value="Neutral">Neutral</option>
-                    <option value="Insatisfecho">Insatisfecho</option>
-                    <option value="Totalmente Insatisfecho">Totalmente Insatisfecho</option>
-                </select>
-                
+
+
+                <input id="filterExtension" placeholder="Buscar Por Extension" type="text" class="border rounded py-2 px-4 max-h-11 mr-4">
+
+                <input id="filterCallerID"  placeholder="Buscar Por Origen" type="text" class="border rounded py-2 px-4 max-h-11 mr-4">
 
                 <input id="filterDate" type="date" class="border rounded py-2 px-4">
-                
+
                 <button id="exportCSV" class="bg-blue-500 text-white py-2 px-4 rounded">Exportar a CSV</button>
             </div>
 
             <table id="dataTable" class="min-w-max max-h-10  ml-28  bg-white border border-gray-500">
                 <thead>
                     <tr>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 text-bold uppercase tracking-wider">#</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">Origen</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">Extension</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">Fecha</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">Hora</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">Respuesta 1</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">Respuesta 2</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">Respuesta 3</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">Respuesta 4</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">Respuesta 5</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 text-bold uppercase tracking-wider">
+                            #</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">
+                            Origen</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">
+                            Extension</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">
+                            Fecha</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">
+                            Hora</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">
+                            Respuesta 1</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">
+                            Respuesta 2</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">
+                            Respuesta 3</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">
+                            Respuesta 4</th>
+                        <th
+                            class="px-6 py-3 border-b-2 border-gray-700 text-left text-xs font-bold text-black-900 uppercase tracking-wider">
+                            Respuesta 5</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">

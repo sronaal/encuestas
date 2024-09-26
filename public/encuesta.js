@@ -2,15 +2,14 @@ import { obtenerEncuentas } from './script/service.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
 
+    let pTotalEncuentas = document.getElementById('totalEncuentas');
+    let pTotalContestadas = document.getElementById('totalContestadas');
 
-    let pTotalEncuentas = document.getElementById('totalEncuentas')
-    let pTotalContestadas = document.getElementById('totalContestadas')
-
-    pTotalEncuentas.textContent = localStorage.getItem('totalEncuetas')
-    pTotalContestadas.textContent = localStorage.getItem('total_respuestasValidas')
+    pTotalEncuentas.textContent = localStorage.getItem('totalEncuetas');
+    pTotalContestadas.textContent = localStorage.getItem('total_respuestasValidas');
 
     const filterCallerID = document.getElementById('filterCallerID');
-    const filterResponse = document.getElementById('filterResponse');
+    const filterExtension = document.getElementById('filterExtension'); // Filtro por Extensión
     const filterDate = document.getElementById('filterDate');
     const exportCSV = document.getElementById('exportCSV');
 
@@ -52,7 +51,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         try {
             const data = await obtenerEncuentas();
 
-            console.log(data) 
             const formattedData = data.map((item, index) => ({
                 index: index + 1,
                 callerID: item.CallerID,
@@ -72,21 +70,21 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 
     function applyFilters() {
-        const response = filterResponse.value;
-        console.log(response)
         const date = filterDate.value;
+        const extension = filterExtension.value;
+        const callerID = filterCallerID.value;
 
         // Apply filters
         table
-            .columns([5, 6, 7, 8, 9]).search(response) // Filter by Response
-            .columns(3).search(date) // Filter by Date
+            .columns(3).search(date) // Filtrar por Fecha
+            .columns(2).search(extension) // Filtrar por Extensión
+            .columns(1).search(callerID) // Filtrar por Origen (CallerID)
             .draw();
     }
 
-    filterResponse.addEventListener('change', applyFilters);
     filterDate.addEventListener('change', applyFilters);
-
-
+    filterExtension.addEventListener('input', applyFilters);
+    filterCallerID.addEventListener('input', applyFilters);
 
     exportCSV.addEventListener('click', () => {
         const csv = Papa.unparse(table.rows().data().toArray());
