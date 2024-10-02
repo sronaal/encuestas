@@ -143,7 +143,7 @@ export function cargarGraficas(
             console.log(datosPreguntas)
 
             // GRAFICOS PARA CADA PREGUNTA
-            for (let i = 0; i < 4; i++) {
+            for (let i = 1; i < 4; i++) {
                 const graficoBarraPregunta = document.getElementById(`respuestaPregunta${i + 1}`).getContext("2d");
                 crearGraficoBarras(graficoBarraPregunta, etiquetasPregunta1, datosPreguntas[i], "Número de respuestas", `respuestaPregunta${i + 1}`);
             }

@@ -13,19 +13,19 @@ SELECT
 
     '¿El funcionario resolvio su problema o respondio a su pregunta de manera satisfactoria?' AS `Pregunta1`,
     CASE
-        WHEN `Respuestas`.`Respuesta1` = 1 THEN 'SI'
-        WHEN `Respuestas`.`Respuesta1` = 2 THEN 'NO'
-       
+        WHEN `Respuestas`.`Respuesta1` = 1 THEN 'Totalmente Insatisfecho'
+        WHEN `Respuestas`.`Respuesta1` = 2 THEN 'Insatisfecho'
+        WHEN `Respuestas`.`Respuesta1` = 3 THEN 'Neutral'
+        WHEN `Respuestas`.`Respuesta1` = 4 THEN 'Satisfecho'
+        WHEN `Respuestas`.`Respuesta1` = 5 THEN 'Totalmente Satisfecho'
         ELSE 'No Respondido'
     END AS `TextoRespuesta1`,
 
     '¿Cual es su nivel de satisfaccion con la amabilidad del funcionario que lo atendio?' AS `Pregunta2`,
     CASE
-        WHEN `Respuestas`.`Respuesta2` = 1 THEN 'Totalmente Insatisfecho'
-        WHEN `Respuestas`.`Respuesta2` = 2 THEN 'Insatisfecho'
-        WHEN `Respuestas`.`Respuesta2` = 3 THEN 'Neutral'
-        WHEN `Respuestas`.`Respuesta2` = 4 THEN 'Satisfecho'
-        WHEN `Respuestas`.`Respuesta2` = 5 THEN 'Totalmente Satisfecho'
+        WHEN `Respuestas`.`Respuesta2` = 1 THEN 'SI'
+        WHEN `Respuestas`.`Respuesta2` = 2 THEN 'NO'
+
         ELSE 'No Respondido'
     END AS `TextoRespuesta2`,
 
