@@ -83,6 +83,9 @@ export function contarRespuestasPorTipo(encuestas) {
     return arrayRespuestas;
 }
 
+
+
+
 export const contarRespuestaPorAgente = (encuestas) => {
     // Inicializamos un objeto para almacenar el conteo de respuestas por agente
     const responseCounts = {};
@@ -190,6 +193,31 @@ export const contarRespuestaPregunta5 = (encuestas) => {
             conteoObject.SI +=1
         }
         if (item.TextoRespuesta5 === 'NO'){
+            conteoObject.NO +=1
+        }
+
+    })
+
+    conteoRespuesta.push(conteoObject)
+    return conteoRespuesta
+
+}
+
+
+
+export const contarRespuestaPregunta2 = (encuestas) => {
+
+    const conteoRespuesta = []
+    const conteoObject = {
+        'SI':0,
+        'NO':0
+    }
+    encuestas.forEach((item) => {
+
+        if (item.TextoRespuesta2 === 'SI' ){
+            conteoObject.SI +=1
+        }
+        if (item.TextoRespuesta2 === 'NO'){
             conteoObject.NO +=1
         }
 

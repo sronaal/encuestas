@@ -6,7 +6,7 @@
     "dev": "nodemon src/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Ronal Sánchez",
   "license": "ISC",
   "description": "",
   "dependencies": {

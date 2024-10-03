@@ -1,8 +1,10 @@
 import { obtenerEncuentas } from './script/service.js';
-import { contarRespuestasNull, contarRespuestasValidas, contarRespuestasPorTipo, contarRespuestasPorPregunta, contarRespuestaPregunta5 } from './script/funciones.js';
+import { contarRespuestasNull, contarRespuestasValidas, contarRespuestasPorTipo, contarRespuestasPorPregunta, contarRespuestaPregunta5, contarRespuestaPregunta2 } from './script/funciones.js';
 import { cargarGraficas } from './grafs.js';
 
 document.addEventListener('DOMContentLoaded', async () => {
+
+
     let Encuestas = await obtenerEncuentas();
 
     let pTotalEncuentas = document.getElementById('totalEncuentas');
@@ -22,6 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     let respuestas_por_tipo = contarRespuestasPorTipo(Encuestas);
     let total_RespuestasPorPregunta = contarRespuestasPorPregunta(Encuestas);
     let total_RespuestasPregunta5 = contarRespuestaPregunta5(Encuestas);
+    let total_RespuestasPorPregunta2 = contarRespuestaPregunta5(Encuestas)
 
     // Almacenar en localStorage
     localStorage.setItem('totalEncuetas', Encuestas.length);
@@ -30,6 +33,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Función para filtrar por fecha
     async function filtrarFecha() {
+
         const selectedDate = new Date(filterDate.value);
         if (!isNaN(selectedDate)) {
 
@@ -52,26 +56,27 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Cargar las gráficas con los datos filtrados
             await cargarGraficas(total_respuestasValidas, total_respuestasNull, respuestas_por_tipo, total_RespuestasPorPregunta, total_RespuestasPregunta5)
+
         } else {
+
             console.error("Fecha no válida");
         }
     }
 
 
     document.getElementById('filtrarRango').addEventListener('click', () => {
-            
+
         const fechaInicio = new Date(document.getElementById('filterDateInicio').value);
         const fechaFin = new Date(document.getElementById('filterDateFin').value);
-    
+
         // Llama a la función de filtrado
         filtrarPorFechas(fechaInicio, fechaFin);
     })
 
 
-    async function filtrarPorFechas(fechaInicio, fechaFin){
+    async function filtrarPorFechas(fechaInicio, fechaFin) {
 
-        console.log(fechaInicio)
-        console.log(fechaFin)
+
         // Filtra los datos dentro del rango de fechas
         const datosFiltrados = Encuestas.filter(item => {
             const fecha = new Date(item.Fecha); // Asumiendo que cada item tiene una propiedad "fecha"
@@ -86,16 +91,18 @@ document.addEventListener('DOMContentLoaded', async () => {
         total_respuestasNull = contarRespuestasNull(datosFiltrados);
         respuestas_por_tipo = contarRespuestasPorTipo(datosFiltrados);
         total_RespuestasPorPregunta = contarRespuestasPorPregunta(datosFiltrados);
+        total_RespuestasPorPregunta2 = contarRespuestar2(datosFiltrados)
         total_RespuestasPregunta5 = contarRespuestaPregunta5(datosFiltrados);
 
         // Cargar las gráficas con los datos filtrados
-        await cargarGraficas(total_respuestasValidas, total_respuestasNull, respuestas_por_tipo, total_RespuestasPorPregunta, total_RespuestasPregunta5)
-   
+        await cargarGraficas(total_respuestasValidas, total_respuestasNull, respuestas_por_tipo, total_RespuestasPorPregunta, total_RespuestasPregunta5, total_RespuestasPorPregunta2)
+
     }
 
+    //console.log(total_RespuestasPorPregunta2)
 
     filterDate.addEventListener('change', filtrarFecha);
 
     // Cargar gráficas inicialmente
-    await cargarGraficas(total_respuestasValidas, total_respuestasNull, respuestas_por_tipo, total_RespuestasPorPregunta, total_RespuestasPregunta5)
+    await cargarGraficas(total_respuestasValidas, total_respuestasNull, respuestas_por_tipo, total_RespuestasPorPregunta, total_RespuestasPregunta5, total_RespuestasPorPregunta2)
 });

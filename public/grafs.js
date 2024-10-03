@@ -13,11 +13,13 @@ export function cargarGraficas(
     total_respuestasNull,
     respuestas_por_tipo,
     total_RespuestasPorPregunta,
-    total_RespuestasPregunta5
+    total_RespuestasPregunta5,
+    total_respuestasPregunta2
 ) {
     return new Promise((resolve, reject) => {
         try {
-            // Función para crear gráficos de barras
+
+            
             const crearGraficoBarras = (context, etiquetas, datos, title, chartId) => {
                 // Si ya existe un gráfico con el mismo ID, destrúyelo
                 if (charts[chartId]) {
@@ -68,11 +70,14 @@ export function cargarGraficas(
                 });
             };
 
+
+
             // GRAFICO BARRAS Respuestas del Usuario
             const graficoBarrasRespuestas = document.getElementById("respuestaBarChart").getContext("2d");
             const etiquetas = respuestas_por_tipo.map((item) => item.id);
             const datos = respuestas_por_tipo.map((item) => item.value);
             crearGraficoBarras(graficoBarrasRespuestas, etiquetas, datos, "Número de respuestas", "respuestaBarChart");
+        
 
             // GRAFICO PORCENTAJES
             const totalResponses = respuestas_por_tipo.reduce((sum, category) => sum + category.value, 0);
@@ -80,6 +85,7 @@ export function cargarGraficas(
                 id: category.id,
                 percentage: totalResponses > 0 ? Math.round((category.value / totalResponses) * 100) : 0,
             }));
+
 
             const ctx = document.getElementById("graficoPorcentaje").getContext("2d");
             const labels = percentages.map((category) => category.id);
@@ -140,10 +146,9 @@ export function cargarGraficas(
                 p["Totalmente Insatisfecho"],
             ]);
 
-            console.log(datosPreguntas)
 
             // GRAFICOS PARA CADA PREGUNTA
-            for (let i = 1; i < 4; i++) {
+            for (let i = 0; i < 4; i++) {
                 const graficoBarraPregunta = document.getElementById(`respuestaPregunta${i + 1}`).getContext("2d");
                 crearGraficoBarras(graficoBarraPregunta, etiquetasPregunta1, datosPreguntas[i], "Número de respuestas", `respuestaPregunta${i + 1}`);
             }
@@ -152,6 +157,8 @@ export function cargarGraficas(
             if (charts["Pregunta5BarChart"]) {
                 charts["Pregunta5BarChart"].destroy(); // Destruir gráfico existente si lo hay
             }
+
+
             const graficoBarraPregunta5 = document.getElementById("pregunta5").getContext("2d");
             charts['Pregunta5BarChart'] = new Chart(graficoBarraPregunta5, {
                 type: "bar",
@@ -213,13 +220,79 @@ export function cargarGraficas(
                 plugins: [ChartDataLabels], // Habilitar el plugin de datalabels
             });
 
+            if(charts['respuestaPregunta2']){
 
+                charts['respuestaPregunta2'].destroy()
+            }
 
+            console.log(total_respuestasPregunta2)
 
+            //const datos_values = total_respuestasPregunta2.map((value) => { })
+            const graficoBarraPregunta2 = document.getElementById('respuestaPregunta2').getContext("2d")
 
+            charts['respuestaPregunta2'] = new Chart(graficoBarraPregunta2, {
 
+                type: "bar",
+                data: {
+                    labels: ["SI", "NO"], // Etiquetas del eje X
+                    datasets: [
+                        {
+                            label: "Número de respuestas",
+                            data: [
+                                total_respuestasPregunta2[0].SI,
+                                total_respuestasPregunta2[0].NO,
+                            ], // Datos en el eje Y
+                            backgroundColor: ["#16f91d", "#e11212"],
+                            borderColor: [
+                                "#e05a0c", // Bordes
+                            ],
+                            borderWidth: 1, // Grosor del borde
+                        },
+                    ],
+                },
+                options: {
+                    responsive: true,
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: "#374151", // Color de las etiquetas (gris oscuro)
+                                font: {
+                                    size: 14, // Tamaño del texto
+                                    weight: "bold", // Texto en negrita
+                                },
+                            },
+                        },
+                        y: {
+                            beginAtZero: true, // El eje Y comienza en 0
+                            ticks: {
+                                color: "#374151", // Color de las etiquetas (gris oscuro)
+                                font: {
+                                    size: 14, // Tamaño del texto
+                                    weight: "bold", // Texto en negrita
+                                },
+                            },
+                        },
+                    },
+                    plugins: {
+                        datalabels: {
+                            color: "#000", // Color de los valores
+                            anchor: "end", // Posición de la etiqueta
+                            align: "top", // Alineación del texto
+                            font: {
+                                weight: "bold",
+                                size: 12,
+                            },
+                            formatter: function (value, context) {
+                                return value; // Mostrar los valores encima de las barras
+                            },
+                        },
+                    },
+                },
+                plugins: [ChartDataLabels], // Habilitar el plugin de datalabels
+            })
 
             resolve();
+
         } catch (error) {
             reject(error);
         }
